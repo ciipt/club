@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>just ash</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="finale">
+<div class="wrap">
+  <h1 id="title">the club room</h1>
+  <div class="intro" id="intro"></div>
+
+  <div class="split" id="split" hidden>
+    <div class="half">
+      <h2>the outlaw</h2>
+      <p class="small">prove it's you.</p>
+      <form id="fo" autocomplete="off">
+        <div class="row"><label for="o1">your bounty (it was on your poster)</label><input id="o1" placeholder="$"></div>
+        <div class="row"><label for="o2">what does the knucklehead ninja want to become?</label><input id="o2"></div>
+        <button>that's me</button>
+      </form>
+      <div class="out" id="oo" hidden></div>
+    </div>
+    <div class="half">
+      <h2>the club member</h2>
+      <p class="small">prove it's you.</p>
+      <form id="fm" autocomplete="off">
+        <div class="row"><label for="m1">whose file should you never, ever trust?</label><input id="m1" placeholder="just..."></div>
+        <div class="row"><label for="m2">there's always money in the...</label><input id="m2"></div>
+        <button>that's me</button>
+      </form>
+      <div class="out" id="mo" hidden></div>
+    </div>
+  </div>
+
+  <div class="foot" id="foot"></div>
+</div>
+<script src="../assets/crypto.js"></script>
+<script src="../assets/data.js"></script>
+<script src="../assets/arg.js"></script>
+<script>
+  const intro = [
+    "oh. you're here.",
+    "both of you? good. i was getting lonely in the files.",
+    "okay. this is the last part, and it's different.",
+    "it splits. one of you is the <b>outlaw</b>. one of you is the <b>club member</b>.",
+    "each of you only gets <b>half</b> of the instructions.",
+    "you can show each other. i can't stop you. but the door only opens for two."
+  ];
+  const el = document.getElementById('intro');
+  intro.forEach((t, i) => setTimeout(() => {
+    const p = document.createElement('p'); p.innerHTML = t; p.className = 'appear'; el.appendChild(p);
+    if (i === 2) ARG.glitch(400);
+    if (i === intro.length - 1) setTimeout(() => { document.getElementById('split').hidden = false; }, 700);
+  }, 300 + i * 1300));
+
+  const done = { outlaw: false, member: false };
+  function check() {
+    if (done.outlaw && done.member) {
+      document.getElementById('foot').innerHTML = 'see you soon <span class="blink">♡</span>';
+      document.getElementById('title').textContent = ARG.corrupt('just ash', .5);
+    }
+  }
+  [['outlaw', 'fo', 'oo'], ['member', 'fm', 'mo']].forEach(([stage, f, o]) => {
+    const out = document.getElementById(o);
+    ARG.quiz({
+      stage, form: document.getElementById(f), out,
+      onFail(n) { out.hidden = false; out.innerHTML = '<p>' + ARG.corrupt(n > 2 ? 'that isn\'t you.' : 'no.', .4) + '</p>'; },
+      onSuccess(html) { ARG.glitch(500); ARG.reveal(out, html, 900); done[stage] = true; setTimeout(check, 7000); }
+    });
+  });
+
+  setInterval(() => { if (Math.random() < .12) ARG.cornerWhisper(['i can see you', 'are you together?', 'don\'t knock alone', 'just ash'][Math.floor(Math.random() * 4)]); }, 5000);
+</script>
+</body>
+</html>

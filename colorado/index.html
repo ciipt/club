@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>a quiet little mountain town</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="town">
+<div class="wrap">
+  <div class="sign">
+    <h1>WELCOME TO A QUIET LITTLE MOUNTAIN TOWN</h1>
+    <p>pop. 4 (+2 outlaws)</p>
+  </div>
+  <div class="mountains"></div>
+  <div class="paper">
+    <p>the stagecoach dropped you off at the bus stop. it's cold. everybody here is a little weird.</p>
+    <p>the town council won't let you into the club room unless you prove you're from around here. <b>this one's for both of you.</b></p>
+
+    <form id="f" autocomplete="off">
+      <div class="row">
+        <label for="a1">1. Butters' real first name</label>
+        <input id="a1">
+      </div>
+      <div class="row">
+        <label for="a2">2. who is Mysterion, actually</label>
+        <input id="a2">
+      </div>
+      <div class="row">
+        <label for="a3">3. the name on Randy's farm</label>
+        <input id="a3">
+      </div>
+      <button>submit to the town council</button>
+    </form>
+
+    <div id="out" hidden></div>
+  </div>
+</div>
+<script src="../assets/crypto.js"></script>
+<script src="../assets/data.js"></script>
+<script src="../assets/arg.js"></script>
+<script>
+  const out = document.getElementById('out');
+  const lines = [
+    "the town council is not impressed.",
+    "green = right. red = you're not from around here.",
+    "screw you guys, try again",
+    "come on. you two have watched this show. probably too much."
+  ];
+  ARG.quiz({
+    stage: 'colorado',
+    form: document.getElementById('f'),
+    out,
+    onFail(n) { out.hidden = false; out.innerHTML = '<p>' + lines[Math.min(n - 1, lines.length - 1)] + '</p>'; }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Valentine Sheriff's Office</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="west">
+<div class="wrap">
+  <div class="poster">
+    <h1>WANTED</h1>
+    <div class="dek">VALENTINE SHERIFF'S OFFICE · BOUNTY BOARD</div>
+
+    <p>Word around the saloon is two strangers rode in tonight, one of 'em claiming to be an outlaw.</p>
+    <p>Real outlaws don't need to look things up. Prove it, and the bounty's yours.</p>
+
+    <form id="f" autocomplete="off">
+      <div class="row">
+        <label for="a1">I. The widow the gang finds at the ranch in the snow. Her first name?</label>
+        <input id="a1">
+      </div>
+      <div class="row">
+        <label for="a2">II. Whose gang is it, partner? (surname)</label>
+        <input id="a2">
+      </div>
+      <div class="row">
+        <label for="a3">III. What year is it out here?</label>
+        <input id="a3" inputmode="numeric">
+      </div>
+      <button>CLAIM BOUNTY</button>
+    </form>
+
+    <div id="out" hidden></div>
+  </div>
+</div>
+<script src="../assets/crypto.js"></script>
+<script src="../assets/data.js"></script>
+<script src="../assets/arg.js"></script>
+<script>
+  const out = document.getElementById('out');
+  const lines = [
+    "Sheriff squints at you. \"That ain't right, stranger.\"",
+    "\"Green borders mean you got that one. Red means you didn't.\"",
+    "\"This one's for the outlaw. Sasha, you awake?\"",
+    "\"We need more money— I mean, more right answers.\""
+  ];
+  ARG.quiz({
+    stage: 'valentine',
+    form: document.getElementById('f'),
+    out,
+    onFail(n) { out.hidden = false; out.innerHTML = '<p>' + lines[Math.min(n - 1, lines.length - 1)] + '</p>'; }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=Rye&family=Special+Elite&family=Patrick+Hand&family=VT323&display=swap');
+
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; }
+body { min-height: 100vh; display: flex; justify-content: center; padding: 48px 18px 80px; }
+.wrap { width: 100%; max-width: 640px; }
+a { color: inherit; }
+input, button { font: inherit; }
+.hidden-msg { display: none; }
+.small { font-size: .85em; opacity: .75; }
+.big { font-size: 1.35em; font-weight: 700; }
+.appear { animation: appear .5s ease both; }
+@keyframes appear { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+form .row { display: flex; flex-direction: column; gap: 6px; margin: 14px 0; }
+form label { font-weight: 700; }
+form input { padding: 10px 12px; border-radius: 8px; border: 2px solid currentColor; background: transparent; color: inherit; outline: none; }
+form input.ok { border-color: #3fae6b; }
+form input.bad { border-color: #d94848; animation: shake .3s; }
+form button { margin-top: 8px; padding: 10px 22px; border: 0; border-radius: 8px; cursor: pointer; font-weight: 700; }
+form button:disabled { opacity: .5; cursor: default; }
+@keyframes shake { 25% { transform: translateX(-4px); } 75% { transform: translateX(4px); } }
+
+/* glitch, shared */
+body.glitching { animation: jitter .12s steps(2) infinite; }
+body.glitching .wrap { filter: invert(1) hue-rotate(180deg) contrast(1.4); }
+@keyframes jitter { 0% { transform: translate(0,0); } 50% { transform: translate(-3px,2px) skewX(-2deg); } 100% { transform: translate(2px,-1px); } }
+.g { font-family: 'VT323', monospace; font-size: 1.4em; color: #c0006a; letter-spacing: 1px; text-shadow: 2px 0 #00e5ff, -2px 0 #ff2a6d; }
+.whisper { position: fixed; right: 14px; bottom: 12px; font-family: 'VT323', monospace; font-size: 20px; color: #c0006a; opacity: .85; pointer-events: none; animation: appear .3s; z-index: 9; }
+
+/* ---------- club (stage 1) ---------- */
+body.club { background: repeating-linear-gradient(45deg, #fff4f8 0 22px, #ffeaf2 22px 44px); color: #5a3b4b; font-family: 'Nunito', sans-serif; }
+.club .card { background: #fff; border: 3px solid #ffb6d1; border-radius: 18px; padding: 28px 26px; box-shadow: 0 10px 0 #ffd3e4; }
+.club h1 { font-weight: 900; color: #ff5fa2; margin: 0 0 4px; font-size: 2.1em; letter-spacing: .5px; }
+.club .sub { margin: 0 0 18px; color: #b07a92; }
+.club .note { background: #fff9e6; border-left: 5px solid #ffd36b; padding: 12px 14px; border-radius: 8px; margin: 18px 0; }
+.club form button { background: #ff6fae; color: #fff; }
+.club .members { display: flex; gap: 10px; flex-wrap: wrap; margin: 14px 0 4px; }
+.club .members span { background: #ffe1ee; padding: 4px 10px; border-radius: 99px; font-size: .9em; }
+.club .members span.gone { text-decoration: line-through; opacity: .5; }
+.club #out { margin-top: 20px; line-height: 1.6; }
+.club #out a { color: #ff2d84; font-family: 'VT323', monospace; font-size: 1.3em; }
+
+/* ---------- valentine (stage 2) ---------- */
+body.west { background: radial-gradient(ellipse at center, #5b3a22 0%, #2a1a0f 100%); color: #2b1d10; font-family: 'Special Elite', monospace; }
+.west .poster { background: #e9d8b4 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.8' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .25 0 0 0 0 .1 0 0 0 .18 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E"); padding: 30px 28px; box-shadow: 0 0 0 6px #c9b083, 0 18px 40px rgba(0,0,0,.6); transform: rotate(-.6deg); }
+.west h1 { font-family: 'Rye', serif; text-align: center; font-size: 2.6em; margin: 0; letter-spacing: 2px; }
+.west .dek { text-align: center; border-top: 3px double #2b1d10; border-bottom: 3px double #2b1d10; padding: 6px 0; margin: 10px 0 18px; letter-spacing: 3px; }
+.west form button { background: #2b1d10; color: #e9d8b4; font-family: 'Rye', serif; letter-spacing: 1px; }
+.west form input { border-color: #6b4e2e; }
+.west .stamp { font-family: 'Rye', serif; color: #a3171b; border: 4px solid #a3171b; display: inline-block; padding: 4px 14px; transform: rotate(-6deg); font-size: 1.6em; }
+.west blockquote { background: #f6ecd2; border-left: 4px solid #6b4e2e; margin: 12px 0; padding: 10px 14px; letter-spacing: 1px; }
+.west #out { margin-top: 18px; line-height: 1.6; }
+
+/* ---------- colorado (stage 3) ---------- */
+body.town { background: linear-gradient(#8fd3ff 0 55%, #fdfdfd 55%); color: #222; font-family: 'Patrick Hand', cursive; font-size: 19px; }
+.town .sign { background: #4f8a3b; color: #fff; border: 5px solid #fff; border-radius: 6px; padding: 18px 20px; text-align: center; box-shadow: 0 0 0 4px #4f8a3b; margin-bottom: 26px; }
+.town .sign h1 { margin: 0; font-size: 2.1em; font-weight: 400; letter-spacing: 1px; }
+.town .sign p { margin: 4px 0 0; }
+.town .paper { background: #fffef5; padding: 24px 24px; border-radius: 4px; box-shadow: 4px 6px 0 rgba(0,0,0,.25); clip-path: polygon(0 2%, 3% 0, 97% 1%, 100% 4%, 99% 97%, 96% 100%, 4% 99%, 1% 96%); }
+.town form button { background: #e8452c; color: #fff; font-family: 'Patrick Hand', cursive; font-size: 1.1em; }
+.town #out { margin-top: 18px; }
+.town .mountains { height: 70px; background: #fff; clip-path: polygon(0 100%, 12% 30%, 24% 70%, 38% 10%, 52% 65%, 66% 20%, 80% 60%, 92% 25%, 100% 55%, 100% 100%); margin: -10px 0 18px; filter: drop-shadow(0 -2px 0 #9bb3c4); }
+
+/* ---------- finale ---------- */
+body.finale { background: #0b0710; color: #f2dbe7; font-family: 'Nunito', sans-serif; }
+.finale h1 { font-family: 'VT323', monospace; color: #ff6fae; font-size: 2.6em; margin: 0 0 8px; text-shadow: 2px 0 #00e5ff, -2px 0 #ff2a6d; }
+.finale .intro p { line-height: 1.7; }
+.finale .split { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 22px; }
+@media (max-width: 600px) { .finale .split { grid-template-columns: 1fr; } }
+.finale .half { border: 2px solid #3a2340; border-radius: 12px; padding: 18px; background: #140c1a; }
+.finale .half h2 { margin: 0 0 6px; font-size: 1.2em; color: #ff9cc8; }
+.finale .half form button { background: #ff6fae; color: #140c1a; }
+.finale .half .out { margin-top: 12px; line-height: 1.6; }
+.finale .half .out .big { color: #fff; background: #2a1530; padding: 8px 10px; border-radius: 8px; }
+.finale .blink { animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.finale .foot { margin-top: 30px; text-align: center; font-family: 'VT323', monospace; font-size: 1.3em; color: #6d4b78; }
+
+/* game warden footer */
+.warden { margin: 34px auto 0; text-align: center; font-size: .9em; opacity: .8; max-width: 420px; padding: 10px 14px; border: 2px dashed currentColor; border-radius: 10px; }
+.warden span { font-size: .85em; opacity: .75; }
+body.west .warden { color: #e9d8b4; }
+body.town .warden { color: #333; background: #fff; }

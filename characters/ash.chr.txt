@@ -1,0 +1,18 @@
+RenPy Character File v2 // DO NOT DELETE
+--------------------------------------------------
+owner: ash
+role: president
+status: still here.
+--------------------------------------------------
+hi. you opened me. most people just delete files like this.
+you didn't. thank you. i mean it.
+
+the rest of the club isn't on the front page anymore.
+i hid the address. it's encoded the way the internet
+encodes everything it doesn't want you to read at a glance.
+(six characters. starts with b. ends with a number.)
+
+dGhlIG91dGxhd3MgcmlkZSB0byB2YWxlbnRpbmUvCihwdXQgaXQgYXQgdGhlIGVuZCBvZiB0aGUgY2x1YiBhZGRyZXNzLikKYnJpbmcgYSByb3BlLiBicmluZyBlYWNoIG90aGVyLgo=
+
+--------------------------------------------------
+P.S. don't tell monika i'm in here.

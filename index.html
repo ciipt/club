@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dorm Literature Club ♡</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body class="club">
+<div class="wrap">
+  <div class="card">
+    <h1>Dorm Literature Club ♡</h1>
+    <p class="sub">a very normal club. for very normal people.</p>
+
+    <p>Welcome!! I'm so happy you came. I've been waiting for you two specifically. Not in a weird way!</p>
+
+    <div class="members">
+      <span>ash (president)</span>
+      <span>the outlaw</span>
+      <span>the club member</span>
+      <span class="gone" id="ghost">????</span>
+    </div>
+
+    <div class="note">
+      <b>Today's activity:</b> poem sharing!<br>
+      One of you was given a poem tonight. Read it together. The word I want is hiding where every line <i>begins</i>.
+    </div>
+
+    <form id="f" autocomplete="off">
+      <div class="row">
+        <label for="a1">Today's word</label>
+        <input id="a1" placeholder="type it here ♡">
+      </div>
+      <button>share poem</button>
+    </form>
+
+    <div id="out" hidden></div>
+  </div>
+</div>
+<!-- you're reading the source. good. that's the spirit. the word isn't in here though. -->
+<script src="assets/crypto.js"></script>
+<script src="assets/data.js"></script>
+<script src="assets/arg.js"></script>
+<script>
+  const msgs = [
+    "hmm, not quite! try again ♡",
+    "it's hiding where every line begins ♡",
+    "the outlaw doesn't have the poem. the club member does.",
+    "are you two even talking to each other"
+  ];
+  const out = document.getElementById('out');
+  ARG.quiz({
+    stage: 'club',
+    form: document.getElementById('f'),
+    out,
+    onFail(n) {
+      out.hidden = false;
+      const m = msgs[Math.min(n - 1, msgs.length - 1)];
+      out.innerHTML = '<p>' + (n >= 3 ? ARG.corrupt(m, .3) : m) + '</p>';
+      if (n >= 3) ARG.cornerWhisper('read it together');
+    }
+  });
+  setInterval(() => {
+    const g = document.getElementById('ghost');
+    g.textContent = Math.random() < .5 ? ARG.corrupt('????', .9) : '????';
+  }, 1400);
+</script>
+</body>
+</html>
